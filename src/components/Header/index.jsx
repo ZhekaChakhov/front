@@ -13,6 +13,8 @@ export const Header = () => {
 	const onClickLogout = () => {
 		if (window.confirm("Вы действительно хотите выйти?")) {
 			dispatch(logout());
+			// удаляем токен при выходе из акк
+			window.localStorage.removeItem("token");
 		}
 	};
 

@@ -27,8 +27,18 @@ export const Login = () => {
 		},
 	});
 
-	const onSubmit = (values) => {
-		dispatch(fetchAuth(values));
+	const onSubmit = async (values) => {
+		const data = await dispatch(fetchAuth(values));
+
+		if (!data.payload) {
+			// если произошла какая-то ошибка в авторизации - оповещяем юзера
+			alert("Не удалось авторизоваться");
+		}
+
+		if ("token" in data.payload) {
+			// сохраняем наш токен в localStorage
+			window.localStorage.setItem("token", data.payload.token);
+		}
 	};
 
 	if (isAuth) {
@@ -36,8 +46,8 @@ export const Login = () => {
 		return <Navigate to="/" />;
 	}
 
-	/* если два поля {...register(...)} рендерятся
-        то мы их сразу регистрируем в useForm, и он их будет обрабатывать */
+	// если два поля {...register(...)} рендерятся
+	//      то мы их сразу регистрируем в useForm, и он их будет обрабатывать
 	return (
 		<Paper classes={{ root: styles.root }}>
 			<Typography classes={{ root: styles.title }} variant="h5">
