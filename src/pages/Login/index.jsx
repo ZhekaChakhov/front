@@ -33,7 +33,7 @@ export const Login = () => {
 
 		if (!data.payload) {
 			// если произошла какая-то ошибка в авторизации - оповещяем юзера
-			alert("Не удалось авторизоваться");
+			alert("Failed to log in");
 		}
 
 		if ("token" in data.payload) {
@@ -51,8 +51,8 @@ export const Login = () => {
 	//      то мы их сразу регистрируем в useForm, и он их будет обрабатывать
 	return (
 		<Paper classes={{ root: styles.root }}>
-			<Typography classes={{ root: styles.title }} variant="h5">
-				Вход в аккаунт
+			<Typography classes={{ root: styles.title }} variant="h4">
+				Sign In
 			</Typography>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<TextField
@@ -60,21 +60,21 @@ export const Login = () => {
 					label="E-Mail"
 					error={Boolean(errors.email?.message)}
 					helperText={errors.email?.message}
-					{...register("email", { required: "Укажите почту" })}
+					{...register("email", { required: "Please enter your email" })}
 					type="email"
 					fullWidth
 				/>
 				<TextField
 					className={styles.field}
-					label="Пароль"
+					label="Password"
 					error={Boolean(errors.password?.message)}
 					helperText={errors.password?.message}
-					{...register("password", { required: "Укажите пароль" })}
+					{...register("password", { required: "Please enter your password" })}
 					type="password"
 					fullWidth
 				/>
 				<Button type="submit" size="large" variant="contained" fullWidth>
-					Войти
+					Sign In
 				</Button>
 			</form>
 		</Paper>

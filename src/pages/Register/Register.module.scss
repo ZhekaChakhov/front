@@ -18,3 +18,15 @@
   font-weight: bold !important;
   margin-bottom: 30px !important;
 }
+
+.Button {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.Button:disabled {
+  background-color: #2f3032 !important;
+  color: #6C6F71 !important;
+}

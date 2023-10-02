@@ -33,16 +33,16 @@ export const Header = () => {
 									variant="contained"
 									color="error"
 								>
-									Выйти
+									Sign Out
 								</Button>
 							</>
 						) : (
 							<>
 								<Link to="/login">
-									<Button variant="outlined">Войти</Button>
+									<Button className={styles.Outlined}>Sign In</Button>
 								</Link>
 								<Link to="/register">
-									<Button variant="contained">Создать аккаунт</Button>
+									<Button className={styles.Contained}>Sign Up</Button>
 								</Link>
 							</>
 						)}
